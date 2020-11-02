@@ -1,0 +1,8 @@
+x = 1 + 2
+print(x)
+print(x * 3)
+y = 10 - x
+print(y)
+print(x / 3)
+print(y * 2)
+print(x / 3 + y * 2)
