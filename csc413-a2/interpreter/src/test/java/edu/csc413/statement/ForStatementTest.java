@@ -18,21 +18,24 @@ class ForStatementTest {
         ProgramState programState = new ProgramState();
 
         String variableName = "var";
-        int value = 10;
-        ConstantExpression constantExpression = new ConstantExpression(10);
 
+        ConstantExpression constantExpression = new ConstantExpression(0);
         AssignStatement  initializeStatement = new AssignStatement(variableName,constantExpression) ;
-        AssignStatement  updateStatement= new AssignStatement(variableName,constantExpression) ;
+
+        ConstantExpression constantExpression1 = new ConstantExpression(4);
+        AssignStatement  updateStatement= new AssignStatement(variableName,constantExpression1) ;
 
 
         AssignStatement assignStatement = new AssignStatement(variableName,constantExpression);
         List<Statement> statementList = new ArrayList<>();
         statementList.add(assignStatement);
-        Condition condition =  Condition.create("");
+
+        Condition condition =  Condition.create("var < 3");
+
         ForStatement forStatement = new ForStatement(statementList,condition, initializeStatement, updateStatement);
         forStatement.run(programState);
 
-        assertEquals(programState.getVariable(variableName),10);
+        assertEquals(programState.getVariable(variableName),4);
 
 
     }

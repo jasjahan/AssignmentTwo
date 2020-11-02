@@ -17,14 +17,18 @@ class WhileStatementTest {
         ProgramState programState = new ProgramState();
 
         String variableName = "var";
-        int value = 10;
-        ConstantExpression constantExpression = new ConstantExpression(10);
 
-        AssignStatement assignStatement = new AssignStatement(variableName,constantExpression);
+        ConstantExpression constantExpression = new ConstantExpression(0);
+        AssignStatement assignStatement= new AssignStatement(variableName, constantExpression);
+        assignStatement.run(programState);
+
+        ConstantExpression constantExpression1 = new ConstantExpression(10);
+        AssignStatement assignStatement1 = new AssignStatement(variableName,constantExpression1);
         List<Statement> statementList = new ArrayList<>();
-        statementList.add(assignStatement);
+        statementList.add(assignStatement1);
 
-        Condition condition =  Condition.create("2<3");
+
+        Condition condition =  Condition.create("var < 3");
         WhileStatement whileStatement = new WhileStatement(statementList,condition);
 
         whileStatement.run(programState);
